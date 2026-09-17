@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ProductImage } from "@/components/store/ProductImage";
 import { useCart } from "@/context/CartContext";
 import { CATEGORY_LABELS, formatPrice, type Product } from "@/lib/products";
-import { Ban, Check, Plus } from "lucide-react";
+import { Check, Flame, Plus } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -18,18 +18,16 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article
-      className={cn(
-        "chrome-panel shine group relative flex flex-col overflow-hidden rounded-lg",
-        product.soldOut && "opacity-80",
-      )}
+      className="chrome-panel shine group relative flex flex-col overflow-hidden rounded-lg"
     >
-      {product.soldOut ? (
-        <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 rounded-sm border border-border bg-[#06070a]/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-          <Ban className="size-3" /> Sold Out
-        </span>
-      ) : product.edition ? (
+      {product.edition ? (
         <span className="absolute left-3 top-3 z-10 rounded-sm border border-[#ff3b57]/50 bg-[#06070a]/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ff5c72]">
           {product.edition}
+        </span>
+      ) : null}
+      {product.stockLeft ? (
+        <span className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-sm border border-[#ff3b57]/50 bg-[#06070a]/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ff5c72]">
+          <Flame className="size-3" /> {product.stockLeft} Left
         </span>
       ) : null}
 
@@ -41,9 +39,6 @@ export function ProductCard({ product }: { product: Product }) {
             category={product.category}
           />
         </div>
-        {product.soldOut && (
-          <div className="pointer-events-none absolute inset-0 bg-[#06070a]/55" />
-        )}
         <div className="scanlines pointer-events-none absolute inset-0 opacity-15" />
       </div>
 
@@ -82,19 +77,14 @@ export function ProductCard({ product }: { product: Product }) {
 
         <Button
           onClick={handleAdd}
-          disabled={product.soldOut}
           className={cn(
             "mt-4 w-full font-semibold uppercase tracking-[0.18em]",
-            product.soldOut
-              ? "cursor-not-allowed border border-border bg-transparent text-muted-foreground"
-              : added
-                ? "border border-[#8fd8ff]/60 bg-[#0f1720] text-[#8fd8ff]"
-                : "btn-chrome",
+            added
+              ? "border border-[#8fd8ff]/60 bg-[#0f1720] text-[#8fd8ff]"
+              : "btn-chrome",
           )}
         >
-          {product.soldOut ? (
-            "Vault Sealed"
-          ) : added ? (
+          {added ? (
             <>
               <Check className="mr-2 size-4" /> Sealed
             </>

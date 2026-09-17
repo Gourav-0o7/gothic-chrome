@@ -15,7 +15,8 @@ export type Product = {
   category: Category;
   price: number; // INR
   compareAt?: number; // strike-through price
-  soldOut?: boolean;
+  /** Units remaining — shows a scarcity badge like "2 Left" */
+  stockLeft?: number;
   materials: string;
   description: string;
   /** Real product photography (Shopify CDN) */
@@ -92,7 +93,7 @@ export const PRODUCTS: Product[] = [
     name: "CH Metal Case Black",
     category: "wallets",
     price: 599,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Hard shell · chrome clasp",
     description:
       "An armored cigarette-style case in matte black with a polished chrome cross clasp.",
@@ -113,7 +114,7 @@ export const PRODUCTS: Product[] = [
     name: "Big CH Cross Metal Case",
     category: "wallets",
     price: 999,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Heavy gauge shell · oversized cross plate",
     description:
       "The statement case — an oversized chrome cross riveted across brushed black steel.",
@@ -213,7 +214,7 @@ export const PRODUCTS: Product[] = [
     name: "Black CH Cap",
     category: "caps",
     price: 849,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Cotton twill · chrome emblem",
     description:
       "Structured six-panel in deep black with the house emblem front and center.",
@@ -234,7 +235,7 @@ export const PRODUCTS: Product[] = [
     name: "CH Logo Black BB Fitted Cap",
     category: "caps",
     price: 749,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Fitted crown · embroidered logo",
     description:
       "Fitted cap with gothic embroidered lettering across the crown. No strap, no compromise.",
@@ -376,7 +377,7 @@ export const PRODUCTS: Product[] = [
     category: "eyewear",
     price: 699,
     compareAt: 899,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Chrome frame · dark tinted lens",
     description:
       "The signature frames — polished chrome wire temples, dark lens, eternal 1986.",
@@ -388,7 +389,7 @@ export const PRODUCTS: Product[] = [
     name: "CH Glasses Golden",
     category: "eyewear",
     price: 799,
-    soldOut: true,
+    stockLeft: 2,
     materials: "Gold-tone frame · dark tinted lens",
     description:
       "The signature silhouette in warmed gold. For saints who prefer their halo brass.",
