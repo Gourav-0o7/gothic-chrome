@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Emblem } from "@/components/store/Emblem";
 import { ProductImage } from "@/components/store/ProductImage";
-import { ProductArt } from "@/components/store/ProductArt";
 import { SiteHeader } from "@/components/store/SiteHeader";
 import { SiteFooter } from "@/components/store/SiteFooter";
 import { ProductCard } from "@/components/store/ProductCard";
@@ -16,10 +15,10 @@ import { ArrowRight, Shield, Gem, Flame } from "lucide-react";
 import { Link } from "react-router";
 
 const MARQUEE_WORDS = [
-  "Sterling Silver",
+  "Chrome Plated Steel",
   "Hand Cast",
   "Limited Editions",
-  "Made in Los Angeles",
+  "Made in Mumbai",
   "Since 1988",
   "Chrome Forever",
 ];
@@ -45,7 +44,15 @@ const HOUSE_PILLARS = [
 const HERO_ID = "ch-rimless-glasses";
 
 export default function Landing() {
-  const featured = PRODUCTS.slice(0, 4);
+  const FEATURED_IDS = [
+    "star-knife-buckle-belt",
+    "gothic-skull-cross",
+    "ch-rimless-glasses",
+    "snake-ring",
+  ];
+  const featured = FEATURED_IDS.map(
+    (id) => PRODUCTS.find((p) => p.id === id)!,
+  );
   const hero = PRODUCTS.find((p) => p.id === HERO_ID) ?? PRODUCTS[0];
 
   return (
@@ -67,7 +74,7 @@ export default function Landing() {
                 transition={{ duration: 0.5 }}
                 className="text-[11px] uppercase tracking-gothic text-[#8fd8ff]"
               >
-                Est. 1988 — Los Angeles
+                Est. 1988 — Mumbai
               </motion.p>
 
               <motion.h1
@@ -94,7 +101,7 @@ export default function Landing() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg"
               >
-                Belts, wallets, necklaces, hats and eyewear — cast in silver,
+                Belts, wallets, necklaces, hats and eyewear — cast in steel,
                 dipped in chrome, finished by hand. Heavy metal for the ones who
                 never left{' '}1986.
               </motion.p>
@@ -170,7 +177,7 @@ export default function Landing() {
                 </div>
                 <div className="chrome-rule-soft mt-5" />
                 <p className="mt-4 text-center text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  Blue-cut lens · Chrome hardware
+                  Rimless lens · Chrome hardware
                 </p>
               </div>
             </motion.div>
@@ -198,10 +205,9 @@ export default function Landing() {
       {/* ── CATEGORY GATES ──────────────────────────────────── */}
       <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6">
         <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-[11px] uppercase tracking-gothic text-[#8fd8ff]">
-              Eight Chambers
-            </p>
+          <div>              <p className="text-[11px] uppercase tracking-gothic text-[#8fd8ff]">
+                Nine Chambers
+              </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-bold text-foreground sm:text-4xl">
               The <span className="text-chrome">Vaults</span>
             </h2>
@@ -214,8 +220,10 @@ export default function Landing() {
           </Link>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
-          {CATEGORIES.map((cat, i) => (
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5">
+          {CATEGORIES.map((cat, i) => {
+            const gate = PRODUCTS.find((p) => p.category === cat)!;
+            return (
             <motion.div
               key={cat}
               initial={{ opacity: 0, y: 18 }}
@@ -229,7 +237,11 @@ export default function Landing() {
               >
                 <div className="chrome-inset aspect-square overflow-hidden rounded-md">
                   <div className="h-full w-full transition-transform duration-500 group-hover:scale-105">
-                    <ProductArt category={cat} />
+                    <ProductImage
+                      src={gate.image}
+                      alt={gate.name}
+                      category={cat}
+                    />
                   </div>
                 </div>
                 <p className="mt-4 font-[family-name:var(--font-display)] text-sm font-semibold uppercase tracking-[0.14em] text-foreground">
@@ -240,7 +252,8 @@ export default function Landing() {
                 </p>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

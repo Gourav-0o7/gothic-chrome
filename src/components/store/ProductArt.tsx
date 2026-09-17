@@ -58,6 +58,20 @@ export function ProductArt({ category, className }: Props) {
         </g>
       )}
 
+      {category === "wallets" && (
+        <g stroke={`url(#chrome-${uid})`} strokeWidth="3.5" strokeLinejoin="round">
+          <rect x="46" y="62" width="108" height="78" rx="10" fill="rgba(11,13,18,0.6)" />
+          <path d="M46 88 h108" strokeWidth="2.5" />
+          <rect x="118" y="80" width="24" height="16" rx="4" fill="rgba(11,13,18,0.85)" />
+          <path
+            d="M130 106 l4 7 8 1 -6 6 2 8 -8 -4 -8 4 2 -8 -6 -6 8 -1 z"
+            stroke={`url(#red-${uid})`}
+            strokeWidth="2.5"
+            fill="none"
+          />
+        </g>
+      )}
+
       {category === "caps" && (
         <g stroke={`url(#chrome-${uid})`} strokeWidth="3.5" strokeLinejoin="round">
           <path d="M52 112 c0 -36 20 -54 48 -54 s48 18 48 54" fill="rgba(11,13,18,0.6)" />

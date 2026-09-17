@@ -71,7 +71,10 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
         <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-          {CATEGORY_LABELS[product.category]} · {product.materials}
+          {CATEGORY_LABELS[product.category]}
+          {product.compareAt && (
+            <span className="ml-2 text-[#ff5c72]">Sale</span>
+          )}
         </p>
         <p className="mt-2.5 line-clamp-2 text-[13px] leading-5 text-muted-foreground">
           {product.description}
