@@ -26,7 +26,7 @@ export function SiteHeader() {
           <Link to="/" className="flex items-center gap-3">
             <Emblem className="h-8 w-8" />
             <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.18em] text-foreground sm:text-base sm:tracking-[0.24em]">
-              MIDNIGHT CHHAYA
+              GOTHIC CHROME
             </span>
           </Link>
 

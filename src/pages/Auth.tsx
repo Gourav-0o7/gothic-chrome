@@ -130,7 +130,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       <Emblem className="mb-4 mt-4 h-16 w-16" />
                     </button>
                   </div>
-                <CardTitle className="font-[family-name:var(--font-display)] text-xl tracking-[0.08em]">Black Noir Atelier</CardTitle>
+                <CardTitle className="font-[family-name:var(--font-display)] text-xl tracking-[0.08em]">Gothic Chrome</CardTitle>
                 <CardDescription>
                   Enter your email to log in or sign up
                 </CardDescription>

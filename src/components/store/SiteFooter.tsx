@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-3">
             <Emblem className="h-8 w-8" />
             <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.24em] text-foreground">
-              MIDNIGHT CHHAYA
+              GOTHIC CHROME
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
@@ -56,7 +56,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-        © 2026 Midnight Chhaya · All rites reserved
+        © 2026 Gothic Chrome · All rites reserved
       </div>
     </footer>
   );
