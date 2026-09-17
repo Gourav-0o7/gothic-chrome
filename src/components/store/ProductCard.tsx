@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ProductArt } from "@/components/store/ProductArt";
+import { ProductImage } from "@/components/store/ProductImage";
 import { useCart } from "@/context/CartContext";
 import { CATEGORY_LABELS, formatPrice, type Product } from "@/lib/products";
-import { Check, Plus } from "lucide-react";
+import { Ban, Check, Plus } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -17,17 +17,34 @@ export function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <article className="chrome-panel shine group relative flex flex-col overflow-hidden rounded-lg">
-      {product.edition && (
+    <article
+      className={cn(
+        "chrome-panel shine group relative flex flex-col overflow-hidden rounded-lg",
+        product.soldOut && "opacity-80",
+      )}
+    >
+      {product.soldOut ? (
+        <span className="absolute left-3 top-3 z-10 flex items-center gap-1.5 rounded-sm border border-border bg-[#06070a]/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          <Ban className="size-3" /> Sold Out
+        </span>
+      ) : product.edition ? (
         <span className="absolute left-3 top-3 z-10 rounded-sm border border-[#ff3b57]/50 bg-[#06070a]/85 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ff5c72]">
           {product.edition}
         </span>
-      )}
-      <div className="relative aspect-square overflow-hidden bg-[#06070a] bg-grid">
+      ) : null}
+
+      <div className="relative aspect-square overflow-hidden bg-[#06070a]">
         <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.06]">
-          <ProductArt category={product.category} />
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            category={product.category}
+          />
         </div>
-        <div className="scanlines pointer-events-none absolute inset-0 opacity-20" />
+        {product.soldOut && (
+          <div className="pointer-events-none absolute inset-0 bg-[#06070a]/55" />
+        )}
+        <div className="scanlines pointer-events-none absolute inset-0 opacity-15" />
       </div>
 
       <div className="flex flex-1 flex-col p-4">
@@ -35,9 +52,23 @@ export function ProductCard({ product }: { product: Product }) {
           <h3 className="font-[family-name:var(--font-display)] text-base font-semibold leading-tight text-foreground">
             {product.name}
           </h3>
-          <span className="shrink-0 text-sm font-semibold tabular-nums text-foreground">
-            {formatPrice(product.price)}
-          </span>
+          <div className="shrink-0 text-right">
+            <span
+              className={cn(
+                "text-sm font-semibold tabular-nums",
+                product.compareAt
+                  ? "text-[#ff5c72]"
+                  : "text-foreground",
+              )}
+            >
+              {formatPrice(product.price)}
+            </span>
+            {product.compareAt && (
+              <span className="ml-2 text-xs tabular-nums text-muted-foreground line-through">
+                {formatPrice(product.compareAt)}
+              </span>
+            )}
+          </div>
         </div>
         <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
           {CATEGORY_LABELS[product.category]} · {product.materials}
@@ -48,14 +79,19 @@ export function ProductCard({ product }: { product: Product }) {
 
         <Button
           onClick={handleAdd}
+          disabled={product.soldOut}
           className={cn(
             "mt-4 w-full font-semibold uppercase tracking-[0.18em]",
-            added
-              ? "border border-[#8fd8ff]/60 bg-[#0f1720] text-[#8fd8ff]"
-              : "btn-chrome",
+            product.soldOut
+              ? "cursor-not-allowed border border-border bg-transparent text-muted-foreground"
+              : added
+                ? "border border-[#8fd8ff]/60 bg-[#0f1720] text-[#8fd8ff]"
+                : "btn-chrome",
           )}
         >
-          {added ? (
+          {product.soldOut ? (
+            "Vault Sealed"
+          ) : added ? (
             <>
               <Check className="mr-2 size-4" /> Sealed
             </>

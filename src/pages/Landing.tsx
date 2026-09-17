@@ -1,10 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Emblem } from "@/components/store/Emblem";
+import { ProductImage } from "@/components/store/ProductImage";
 import { ProductArt } from "@/components/store/ProductArt";
 import { SiteHeader } from "@/components/store/SiteHeader";
 import { SiteFooter } from "@/components/store/SiteFooter";
 import { ProductCard } from "@/components/store/ProductCard";
-import { CATEGORIES, CATEGORY_LABELS, PRODUCTS } from "@/lib/products";
+import {
+  CATEGORIES,
+  CATEGORY_LABELS,
+  PRODUCTS,
+  formatPrice,
+} from "@/lib/products";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Gem, Flame } from "lucide-react";
 import { Link } from "react-router";
@@ -36,8 +42,11 @@ const HOUSE_PILLARS = [
   },
 ];
 
+const HERO_ID = "ch-rimless-glasses";
+
 export default function Landing() {
   const featured = PRODUCTS.slice(0, 4);
+  const hero = PRODUCTS.find((p) => p.id === HERO_ID) ?? PRODUCTS[0];
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -139,7 +148,11 @@ export default function Landing() {
             >
               <div className="chrome-panel glow-cyan relative rounded-lg p-8 sm:p-10">
                 <div className="chrome-inset relative aspect-square overflow-hidden rounded-md">
-                  <ProductArt category="eyewear" className="p-6" />
+                  <ProductImage
+                    src={hero.image}
+                    alt={hero.name}
+                    category={hero.category}
+                  />
                   <div className="scanlines absolute inset-0" />
                 </div>
                 <div className="mt-6 flex items-center justify-between">
@@ -148,16 +161,16 @@ export default function Landing() {
                       Signature Artifact
                     </p>
                     <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-semibold text-foreground">
-                      Crimson Saint Shades
+                      {hero.name}
                     </p>
                   </div>
                   <span className="font-[family-name:var(--font-display)] text-2xl font-bold text-chrome">
-                    $1,120
+                    {formatPrice(hero.price)}
                   </span>
                 </div>
                 <div className="chrome-rule-soft mt-5" />
                 <p className="mt-4 text-center text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  Edition of 50 — Cast in silver
+                  Blue-cut lens · Chrome hardware
                 </p>
               </div>
             </motion.div>
@@ -187,7 +200,7 @@ export default function Landing() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-[11px] uppercase tracking-gothic text-[#8fd8ff]">
-              Five Chambers
+              Eight Chambers
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-bold text-foreground sm:text-4xl">
               The <span className="text-chrome">Vaults</span>
@@ -201,7 +214,7 @@ export default function Landing() {
           </Link>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
           {CATEGORIES.map((cat, i) => (
             <motion.div
               key={cat}

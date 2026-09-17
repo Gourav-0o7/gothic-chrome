@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { ProductArt } from "@/components/store/ProductArt";
+import { ProductImage } from "@/components/store/ProductImage";
 import { useCart } from "@/context/CartContext";
 import { CATEGORY_LABELS, formatPrice } from "@/lib/products";
 import { Minus, Plus, Trash2 } from "lucide-react";
@@ -65,7 +65,11 @@ export function CartDrawer({
                     className="chrome-panel flex gap-3 rounded-md p-3"
                   >
                     <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md border border-border bg-[#06070a]">
-                      <ProductArt category={product.category} />
+                      <ProductImage
+                        src={product.image}
+                        alt={product.name}
+                        category={product.category}
+                      />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">

@@ -9,13 +9,13 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-3">
             <Emblem className="h-8 w-8" />
-            <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.28em] text-foreground">
-              BLACKNOIR
+            <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.24em] text-foreground">
+              MIDNIGHT CHHAYA
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
-            Gothic artifacts cast in silver and chrome. Hand-finished in limited
-            editions since 1988.
+            Gothic accessories in chrome and silver — belts, caps, necklaces,
+            rings, keychains and eyewear. Limited drops, no restocks.
           </p>
         </div>
 
@@ -25,10 +25,12 @@ export function SiteFooter() {
           </p>
           <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
             <li><Link className="hover:text-foreground" to="/shop?category=belts">Belts</Link></li>
-            <li><Link className="hover:text-foreground" to="/shop?category=wallets">Wallets</Link></li>
+            <li><Link className="hover:text-foreground" to="/shop?category=caps">Caps</Link></li>
             <li><Link className="hover:text-foreground" to="/shop?category=necklaces">Necklaces</Link></li>
-            <li><Link className="hover:text-foreground" to="/shop?category=hats">Hats</Link></li>
+            <li><Link className="hover:text-foreground" to="/shop?category=rings">Rings</Link></li>
+            <li><Link className="hover:text-foreground" to="/shop?category=keychains">Keychains</Link></li>
             <li><Link className="hover:text-foreground" to="/shop?category=eyewear">Eyewear</Link></li>
+            <li><Link className="hover:text-foreground" to="/shop?category=limited">Chrome Limited</Link></li>
           </ul>
         </div>
 
@@ -54,7 +56,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-        © 1988–2026 Black Noir Atelier · All rites reserved
+        © 2026 Midnight Chhaya · All rites reserved
       </div>
     </footer>
   );

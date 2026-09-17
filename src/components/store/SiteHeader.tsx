@@ -25,8 +25,8 @@ export function SiteHeader() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-3">
             <Emblem className="h-8 w-8" />
-            <span className="font-[family-name:var(--font-display)] text-base font-bold tracking-[0.28em] text-foreground">
-              BLACKNOIR
+            <span className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.18em] text-foreground sm:text-base sm:tracking-[0.24em]">
+              MIDNIGHT CHHAYA
             </span>
           </Link>
 

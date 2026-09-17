@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ProductArt } from "@/components/store/ProductArt";
+import { ProductImage } from "@/components/store/ProductImage";
 import { SiteHeader } from "@/components/store/SiteHeader";
 import { SiteFooter } from "@/components/store/SiteFooter";
 import { useCart } from "@/context/CartContext";
@@ -66,8 +66,12 @@ export default function Cart() {
                       key={item.productId}
                       className="chrome-panel flex gap-4 rounded-lg p-4"
                     >
-                      <div className="hidden h-28 w-28 shrink-0 overflow-hidden rounded-md border border-border bg-[#06070a] bg-grid sm:block">
-                        <ProductArt category={product.category} />
+                      <div className="hidden h-28 w-28 shrink-0 overflow-hidden rounded-md border border-border bg-[#06070a] sm:block">
+                        <ProductImage
+                          src={product.image}
+                          alt={product.name}
+                          category={product.category}
+                        />
                       </div>
                       <div className="flex min-w-0 flex-1 flex-col">
                         <div className="flex items-start justify-between gap-3">
