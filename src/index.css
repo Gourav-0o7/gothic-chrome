@@ -1,4 +1,4 @@
-/* DO NOT CHANGE */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
@@ -40,87 +40,315 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-body: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* CHANGE VALUES FOR THEME */
+/* CHANGE VALUES FOR THEME — "Gothic Chrome": obsidian black, liquid silver,
+   electric ice + blood accent. 80s chrome + futurist gothic. */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.375rem;
+  --background: #06070a;
+  --foreground: #e7ecf2;
+  --card: #0b0d12;
+  --card-foreground: #e7ecf2;
+  --popover: #0b0d12;
+  --popover-foreground: #e7ecf2;
+  --primary: #dfe7ef;
+  --primary-foreground: #0a0c10;
+  --secondary: #12151c;
+  --secondary-foreground: #dfe7ef;
+  --muted: #10131a;
+  --muted-foreground: #8b94a3;
+  --accent: #141924;
+  --accent-foreground: #e7ecf2;
+  --destructive: #ff3b57;
+  --border: rgba(214, 226, 238, 0.12);
+  --input: rgba(214, 226, 238, 0.16);
+  --ring: rgba(140, 200, 255, 0.55);
+  --chart-1: #8fd8ff;
+  --chart-2: #dfe7ef;
+  --chart-3: #ff3b57;
+  --chart-4: #5e6a7a;
+  --chart-5: #37404e;
+  --sidebar: #0b0d12;
+  --sidebar-foreground: #e7ecf2;
+  --sidebar-primary: #dfe7ef;
+  --sidebar-primary-foreground: #0a0c10;
+  --sidebar-accent: #141924;
+  --sidebar-accent-foreground: #e7ecf2;
+  --sidebar-border: rgba(214, 226, 238, 0.12);
+  --sidebar-ring: rgba(140, 200, 255, 0.55);
 }
 
+/* The entire site is permanently dark — mirror tokens. */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #06070a;
+  --foreground: #e7ecf2;
+  --card: #0b0d12;
+  --card-foreground: #e7ecf2;
+  --popover: #0b0d12;
+  --popover-foreground: #e7ecf2;
+  --primary: #dfe7ef;
+  --primary-foreground: #0a0c10;
+  --secondary: #12151c;
+  --secondary-foreground: #dfe7ef;
+  --muted: #10131a;
+  --muted-foreground: #8b94a3;
+  --accent: #141924;
+  --accent-foreground: #e7ecf2;
+  --destructive: #ff3b57;
+  --border: rgba(214, 226, 238, 0.12);
+  --input: rgba(214, 226, 238, 0.16);
+  --ring: rgba(140, 200, 255, 0.55);
+  --chart-1: #8fd8ff;
+  --chart-2: #dfe7ef;
+  --chart-3: #ff3b57;
+  --chart-4: #5e6a7a;
+  --chart-5: #37404e;
+  --sidebar: #0b0d12;
+  --sidebar-foreground: #e7ecf2;
+  --sidebar-primary: #dfe7ef;
+  --sidebar-primary-foreground: #0a0c10;
+  --sidebar-accent: #141924;
+  --sidebar-accent-foreground: #e7ecf2;
+  --sidebar-border: rgba(214, 226, 238, 0.12);
+  --sidebar-ring: rgba(140, 200, 255, 0.55);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
     cursor: pointer;
+  }
+  ::selection {
+    background: rgba(140, 200, 255, 0.35);
+    color: #f4f8fc;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #06070a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3a4250, #202631);
+    border: 2px solid #06070a;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #57637a, #2c3442);
+  }
+}
+
+@layer utilities {
+  /* Liquid-chrome text fill (80s automotive chrome) */
+  .text-chrome {
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #dfe7ef 22%,
+      #93a1b1 42%,
+      #5b6675 48%,
+      #f2f6fa 55%,
+      #aab6c4 68%,
+      #6b7684 84%,
+      #e8eef5 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.8))
+      drop-shadow(0 0 18px rgba(140, 200, 255, 0.18));
+  }
+
+  /* Horizontal chrome trim — the classic 80s sweep */
+  .chrome-rule {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #3a4250 12%,
+      #e8eef5 38%,
+      #5b6675 52%,
+      #f2f6fa 66%,
+      #3a4250 88%,
+      transparent 100%
+    );
+  }
+
+  .chrome-rule-soft {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214, 226, 238, 0.35), transparent);
+  }
+
+  /* Beveled panel like brushed metal glass */
+  .chrome-panel {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(223, 231, 239, 0.05), rgba(223, 231, 239, 0.015)),
+      #0b0d12;
+    border: 1px solid rgba(214, 226, 238, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+      0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .chrome-inset {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(11, 13, 18, 0.9));
+    box-shadow:
+      inset 0 2px 8px rgba(0, 0, 0, 0.7),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(214, 226, 238, 0.08);
+  }
+
+  /* Blueprint grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .bg-radial-glow {
+    background: radial-gradient(
+      ellipse 70% 55% at 50% 0%,
+      rgba(140, 200, 255, 0.13),
+      transparent 65%
+    );
+  }
+
+  /* Very subtle CRT scanlines for the 80s feel */
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.28) 0px,
+      rgba(0, 0, 0, 0.28) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: 0.35;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 24px rgba(140, 200, 255, 0.22), 0 0 60px rgba(140, 200, 255, 0.08);
+  }
+
+  .glow-crimson {
+    box-shadow: 0 0 24px rgba(255, 59, 87, 0.25), 0 0 60px rgba(255, 59, 87, 0.08);
+  }
+
+  /* Chrome bar (nav top edge / buttons) */
+  .chrome-bar {
+    background: linear-gradient(
+      180deg,
+      #f4f8fc 0%,
+      #c3cdd9 35%,
+      #77828f 50%,
+      #b9c4d0 65%,
+      #e8eef5 100%
+    );
+  }
+
+  .btn-chrome {
+    background: linear-gradient(
+      180deg,
+      #f4f8fc 0%,
+      #c3cdd9 38%,
+      #8b96a4 50%,
+      #b9c4d0 62%,
+      #eef3f9 100%
+    );
+    color: #0a0c10;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -2px 4px rgba(30, 40, 55, 0.45),
+      0 0 0 1px rgba(10, 12, 16, 0.85),
+      0 8px 24px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .btn-chrome:hover {
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d7e0ea 38%,
+      #9aa6b3 50%,
+      #c9d3de 62%,
+      #f8fbfe 100%
+    );
+  }
+  .btn-chrome:active {
+    background: linear-gradient(180deg, #8b96a4 0%, #aab5c2 100%);
+  }
+
+  .btn-ghost-chrome {
+    background: rgba(10, 12, 16, 0.6);
+    color: #dfe7ef;
+    border: 1px solid rgba(214, 226, 238, 0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+  .btn-ghost-chrome:hover {
+    border-color: rgba(214, 226, 238, 0.55);
+    background: rgba(20, 25, 36, 0.85);
+  }
+
+  /* Marquee */
+  @keyframes chrome-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: chrome-marquee 28s linear infinite;
+  }
+
+  /* Slow shine sweep across panels on hover */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: "";
+    position: absolute;
+    top: -60%;
+    bottom: -60%;
+    left: -30%;
+    width: 36%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.14),
+      transparent
+    );
+    transform: translateX(-140%) rotate(12deg);
+    transition: transform 0.9s ease;
+    pointer-events: none;
+  }
+  .shine:hover::after {
+    transform: translateX(480%) rotate(12deg);
+  }
+
+  .tracking-gothic {
+    letter-spacing: 0.32em;
   }
 }

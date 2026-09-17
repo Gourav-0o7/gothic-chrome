@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/input-otp";
 
 import { useAuth } from "@/hooks/use-auth";
-import logo from "@/assets/logo.svg";
+import { Emblem } from "@/components/store/Emblem";
 import { ArrowRight, Loader2, Mail, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
@@ -110,27 +110,27 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative flex min-h-screen flex-col overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className="absolute inset-0 bg-radial-glow" />
 
-      
       {/* Auth Content */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="flex items-center justify-center h-full flex-col">
-        <Card className="min-w-[350px] pb-0 border shadow-md">
+      <div className="relative flex flex-1 items-center justify-center">
+        <div className="flex h-full flex-col items-center justify-center">
+        <Card className="chrome-panel min-w-[350px] rounded-lg pb-0">
           {step === "signIn" ? (
             <>
               <CardHeader className="text-center">
               <div className="flex justify-center">
-                    <img
-                      src={logo}
-                      alt="Lock Icon"
-                      width={64}
-                      height={64}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer"
+                    <button
+                      className="cursor-pointer"
                       onClick={() => navigate("/")}
-                    />
+                      aria-label="Back to home"
+                    >
+                      <Emblem className="mb-4 mt-4 h-16 w-16" />
+                    </button>
                   </div>
-                <CardTitle className="text-xl">Get Started</CardTitle>
+                <CardTitle className="font-[family-name:var(--font-display)] text-xl tracking-[0.08em]">Black Noir Atelier</CardTitle>
                 <CardDescription>
                   Enter your email to log in or sign up
                 </CardDescription>
@@ -277,7 +277,8 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
             </>
           )}
 
-          <div className="py-4 px-6 text-xs text-center text-muted-foreground bg-muted border-t rounded-b-lg">
+          <div className="rounded-b-lg border-t bg-[#06070a] px-6 py-4 text-center text-xs text-muted-foreground">
+            <span className="chrome-rule-soft mb-4 block" />
             Secured by{" "}
             <a
               href="https://freebuff.com"
