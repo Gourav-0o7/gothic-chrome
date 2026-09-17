@@ -11,8 +11,13 @@ export function useIsMobile() {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
     mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
+    // Sync once via rAF so the state update happens in a callback, not the
+    // effect body (avoids cascading-render lint error).
+    const raf = requestAnimationFrame(onChange)
+    return () => {
+      mql.removeEventListener("change", onChange)
+      cancelAnimationFrame(raf)
+    }
   }, [])
 
   return !!isMobile

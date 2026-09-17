@@ -55,22 +55,19 @@ function loadInitial(): CartItem[] {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [isHydrated, setIsHydrated] = useState(false);
+  // Client-only SPA: hydrate once via lazy initializer instead of an effect,
+  // so the persisted cart is available on first render without a cascade.
+  const [items, setItems] = useState<CartItem[]>(loadInitial);
+  const isHydrated = true;
 
+  // Persist to localStorage on change (external-system sync).
   useEffect(() => {
-    setItems(loadInitial());
-    setIsHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isHydrated) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     } catch {
       // storage unavailable — cart stays in memory
     }
-  }, [items, isHydrated]);
+  }, [items]);
 
   const add = useCallback((productId: string) => {
     setItems((prev) => {

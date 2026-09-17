@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/store/ProductCard";
 import { SiteHeader } from "@/components/store/SiteHeader";
 import { SiteFooter } from "@/components/store/SiteFooter";

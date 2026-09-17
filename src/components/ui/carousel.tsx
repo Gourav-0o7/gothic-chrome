@@ -93,12 +93,15 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
-    onSelect(api)
+    // Initial sync via rAF callback so state updates don't happen inside the
+    // effect body (avoids cascading-render lint error).
+    const raf = requestAnimationFrame(() => onSelect(api))
     api.on("reInit", onSelect)
     api.on("select", onSelect)
 
     return () => {
       api?.off("select", onSelect)
+      cancelAnimationFrame(raf)
     }
   }, [api, onSelect])
 
